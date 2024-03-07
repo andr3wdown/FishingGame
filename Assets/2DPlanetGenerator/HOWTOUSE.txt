@@ -1,0 +1,54 @@
+2D PlanetCreator/Editor
+
+How to use guide
+
+In Editor:
+
+-Drag PlanetCreator to scene from /SceneObjects
+
+-Add a game object with a sprite renderer
+
+-Drag the game object to the target variable on GeneratePlanet.cs on the PlanetCreator in the inspector
+
+-Edit parameters to change planet
+
+-When you want to finalize the changes just copy the planet. The copied object is your final planet!
+
+-You can also choose to save the planet as a png from the inspector.
+
+Extra:
+// All textures applied must be the same size as the generated planet eg. if the texture dimensions are 512x512 the shadow texture and the mask texture must be that size \\
+-Shadows:
+	-Go to /Images/Shadows
+	-Apply shadow texture to the shadows variable in GeneratePlanet.cs in the inspector
+-Masks:
+	-Go to /Images/Masks
+	-Apply mask texture to the shadows variable in GeneratePlanet.cs in the inspector
+	-If no mask is applied one will be generated (using one gives better results and better performance)
+
+
+
+adjusting biomes:
+
+-go to regions on the GeneratePlanet.cs on generator
+
+here you can change the biomes names, color that will show up on the planet as well as the biomes range(heightnotepad) on the planet.
+
+
+
+Randomized at runtime:
+
+-Add using PlanetGenerator2D; to the top of your script
+
+-Instantiate a object with a sprite renderer
+
+-Call the GetPlanetSprite() method from GeneratePlanet.cs to get a sprite (optionally you can pass in an array of TerrainTypes if you want set types of biomes)
+
+-Apply that sprite to the game objects sprite renderer
+
+see ExampleRuntimeSpawner.cs for more info
+
+
+Coming soon:
+	-Editable atmospheres
+	
