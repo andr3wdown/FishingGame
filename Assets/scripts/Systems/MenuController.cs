@@ -8,7 +8,9 @@ public class MenuController : MonoBehaviour
 	public Image fishPict;
 	public Text[] texts;
 	static bool menuing = false;
-	public Animator fishAnim;
+	public Animator fishMenuAnim;
+	public Animator keepnetMenuAnim;
+	private FishData data;
 	static MenuController instance;
     void Start()
     {
@@ -22,22 +24,49 @@ public class MenuController : MonoBehaviour
 	public void OpenFishMenu(FishData fish)
 	{
 		menuing = true;
+		data = fish;
 		fishPict.sprite = fish.sprite;
 		texts[0].text = fish.name;
 		texts[1].text = System.Math.Round(fish.weight/1000, 2).ToString() + "kg";
 		texts[2].text = System.Math.Round(fish.lenght, 2).ToString() + "cm";
 		texts[3].text = fish.money.ToString() + "$";
-		fishAnim.SetBool("MenuOpen", true);
+		fishMenuAnim.SetBool("MenuOpen", true);
 	}
 	public void CloseFishMenu()
 	{
 		menuing = false;
+		
 		//fishPict.sprite = null;
 		texts[0].text = "";
 		texts[1].text = "";
 		texts[2].text = "";
 		texts[3].text = "";
-		fishAnim.SetBool("MenuOpen", false);
+		fishMenuAnim.SetBool("MenuOpen", false);
+	}
+	public void KeepFish()
+	{
+		PlayerInventory.AddFish(data);
+		CloseFishMenu();
+	}
+
+
+	public static void OpenKeepnet()
+	{
+		menuing = true;
+
+	}
+
+	public void CreateKeepnetUI()
+	{
+		FishData[] keepnet = PlayerInventory.GetFishInKeepnet;
+		for(int i = 0; i < keepnet.Length; i++)
+		{
+
+		}
+	}
+	public void GenerateFishCard()
+	{
+
 	}
    
 }
